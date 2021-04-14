@@ -274,3 +274,11 @@ Experto en Información => la clase responsable es la que tiene la información
 - Creación de método getTitle() en Rental
 
 
+## <em>**Versión 24.**</em> Clase “Movie“ y "Price"
+
+### <em>**Refactoring**</em>
+
+- Eliminar Price y herencias
+- Modificar abstract Movie
+- Añadir RegularMovie, NewReleaseMovie y ChildrenMovie (herencia de Movie)
+- Modificación de MovieBuilder

@@ -26,9 +26,7 @@ public class CustomerMultipleTypeMovieRentalTest {
 
         String statement = customer.statement();
 
-        String result = new StatementBuilder().customerName(customerName)
-                .movie(regularMovieName, 14).movie(newReleaseMovieName, 3).movie(childrensMovieName, 15)
-                .totalAmount(32).frequentRenterPoints(4).build();
-        assertEquals(result, statement);
+        assertEquals(32, new StatementDecompose(statement).getTotalAmount(), 0.000001);
+        assertEquals(4, new StatementDecompose(statement).getFrequentRenterPoints());
     }
 }

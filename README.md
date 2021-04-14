@@ -266,4 +266,11 @@ Experto en Información => la clase responsable es la que tiene la información
 
 - Reemplazar while con funciones lambda
 
+## <em>**Versión 23.**</em> Clase “Customer“ y "Rental"
+
+### <em>**Refactoring**</em>
+
+- Dependencia directa de colaboradores
+- Creación de método getTitle() en Rental
+
 

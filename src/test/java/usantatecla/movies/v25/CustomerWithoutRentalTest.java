@@ -2,7 +2,7 @@ package usantatecla.movies.v25;
 
 import org.junit.Before;
 import org.junit.Test;
-import usantatecla.movies.v24.StatementBuilder;
+
 
 import static org.junit.Assert.assertEquals;
 

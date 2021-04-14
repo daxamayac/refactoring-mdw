@@ -1,53 +1,47 @@
 package usantatecla.movies.v25;
 
+import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 
 public class CustomerChildrenRentalTest {
+
+    String movieName = "movieName";
+    String customerName = "customerName";
+    private Movie movie;
+
+    @Before
+    public void before() {
+        movie = new MovieBuilder().title(movieName).childrens().build();
+    }
+
     @Test
     public void childrensRental1DayTest() {
-        String movieName = "movieName";
-        Movie movie = new MovieBuilder().title(movieName).childrens().build();
         Rental rental = new RentalBuilder().movie(movie).daysRented(1).build();
-        String customerName = "customerName";
         Customer customer = new CustomerBuilder().name(customerName).rental(rental).build();
-
         String statement = customer.statement();
-
-        String result = new StatementBuilder().customerName(customerName).movie(movieName, 1.5)
-                .totalAmount(1.5).frequentRenterPoints(1).build();
-        assertEquals(result, statement);
+        assertEquals(1.5, new StatementDecompose(statement).getTotalAmount(), 0.000001);
+        assertEquals(1, new StatementDecompose(statement).getFrequentRenterPoints());
     }
 
     @Test
     public void childrensRental3DayTest() {
-        String movieName = "movieName";
-        Movie movie = new MovieBuilder().title(movieName).childrens().build();
         Rental rental = new RentalBuilder().movie(movie).daysRented(3).build();
-        String customerName = "customerName";
         Customer customer = new CustomerBuilder().name(customerName).rental(rental).build();
-
         String statement = customer.statement();
-
-        String result = new StatementBuilder().customerName(customerName).movie(movieName, 1.5)
-                .totalAmount(1.5).frequentRenterPoints(1).build();
-        assertEquals(result, statement);
+        assertEquals(1.5, new StatementDecompose(statement).getTotalAmount(), 0.000001);
+        assertEquals(1, new StatementDecompose(statement).getFrequentRenterPoints());
     }
 
     @Test
     public void childrensRental4DayTest() {
-        String movieName = "movieName";
-        Movie movie = new MovieBuilder().title(movieName).childrens().build();
         Rental rental = new RentalBuilder().movie(movie).daysRented(4).build();
-        String customerName = "customerName";
         Customer customer = new CustomerBuilder().name(customerName).rental(rental).build();
-
         String statement = customer.statement();
+        assertEquals(6.0, new StatementDecompose(statement).getTotalAmount(), 0.000001);
+        assertEquals(1, new StatementDecompose(statement).getFrequentRenterPoints());
 
-        String result = new StatementBuilder().customerName(customerName).movie(movieName, 6)
-                .totalAmount(6).frequentRenterPoints(1).build();
-        assertEquals(result, statement);
     }
 
 }

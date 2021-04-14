@@ -10,16 +10,31 @@ public class CustomerTest {
     String movieName = "movieName";
 
     @Test
-    public void withoutRentalsTest() {
-
+    public void withoutRentalsCustomerNameTest() {
         Customer customer = new CustomerBuilder().name(customerName).build();
-
         String statement = customer.statement();
+        assertEquals(customer.getName(), new StatementDecompose(statement).getCustomerName());
+    }
 
-        String result = new StatementBuilder().customerName(customerName)
-                .totalAmount(0).frequentRenterPoints(0).build();
+    @Test
+    public void withoutRentalsMoviesTest() {
+        Customer customer = new CustomerBuilder().name(customerName).build();
+        String statement = customer.statement();
+        assertEquals(0, new StatementDecompose(statement).getTotalAmount(),0.000001);
+    }
 
-        assertEquals(customer.getName(), customerName);
+    @Test
+    public void withoutRentalsTotalAmountTest() {
+        Customer customer = new CustomerBuilder().name(customerName).build();
+        String statement = customer.statement();
+        assertEquals("", new StatementDecompose(statement).getMovies());
+    }
+
+    @Test
+    public void withoutRentalsFrequentRenterPointsTest() {
+        Customer customer = new CustomerBuilder().name(customerName).build();
+        String statement = customer.statement();
+        assertEquals(0, new StatementDecompose(statement).getFrequentRenterPoints());
     }
 
     @Test
@@ -175,6 +190,7 @@ public class CustomerTest {
         String result = new StatementBuilder().customerName(customerName)
                 .movie(regularMovieName, 14).movie(newReleaseMovieName, 3).movie(childrensMovieName, 15)
                 .totalAmount(32).frequentRenterPoints(4).build();
+
         assertEquals(result, statement);
     }
 

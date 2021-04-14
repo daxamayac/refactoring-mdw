@@ -255,3 +255,15 @@ Experto en Información => la clase responsable es la que tiene la información
 
 ![claseCustomer](/out/docs/diagrams/src/movies21/movies.svg)
 
+
+## <em>**Versión 22.**</em> Clase “Customer“
+
+### <em>**Smell Code:**</em>
+
+- Cambio de nombre, linea 30 "each" a "rent" 
+
+### <em>**Refactoring**</em>
+
+- Reemplazar while con funciones lambda
+
+

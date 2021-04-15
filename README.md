@@ -282,3 +282,9 @@ Experto en Información => la clase responsable es la que tiene la información
 - Modificar abstract Movie
 - Añadir RegularMovie, NewReleaseMovie y ChildrenMovie (herencia de Movie)
 - Modificación de MovieBuilder
+
+## <em>**Versión 25.**</em> Clase “CustomerTest"
+
+### <em>**Refactoring**</em>
+
+- Dividir CustomerTest en diferentes archivos de prueba
